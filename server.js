@@ -8,7 +8,7 @@ const app = express();
 
 // EJS Layout configuration
 app.use(ejsLayouts);
-app.set('layout', 'layout');
+// app.set('layout', 'layout');
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
