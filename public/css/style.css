@@ -456,7 +456,7 @@ body {
 .testimonial-slider {
     position: relative;
     overflow: hidden;
-    min-height: 200px;
+    min-height: 250px; /* Set a fixed height to prevent layout shift */
 }
 
 .testimonial-card {
@@ -467,12 +467,22 @@ body {
     width: 100%;
     top: 0;
     left: 0;
+    visibility: hidden; /* Add this to completely hide non-active cards */
 }
 
 .testimonial-card.active {
     opacity: 1;
     transform: translateX(0);
     position: relative;
+    visibility: visible; /* Make active card visible */
+}
+
+/* Ensure only the first testimonial is visible on page load */
+.testimonial-card:first-child {
+    position: relative;
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
 }
 
 .testimonial-nav {

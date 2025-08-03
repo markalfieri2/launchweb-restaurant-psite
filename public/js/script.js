@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.querySelector('.next-btn');
     let currentTestimonial = 0;
 
+    // Safety check - only run if testimonials exist
+    if (testimonialCards.length === 0) return;
+
     function showTestimonial(index) {
         // Hide all testimonials
         testimonialCards.forEach(card => {
@@ -36,7 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Show the current testimonial
-        testimonialCards[index].classList.add('active');
+        if (testimonialCards[index]) {
+            testimonialCards[index].classList.add('active');
+        }
     }
 
     function nextTestimonial() {
@@ -49,6 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
         showTestimonial(currentTestimonial);
     }
 
+    // Initialize - make sure only first testimonial is active
+    showTestimonial(0);
+
     // Event listeners for buttons
     if (nextBtn) {
         nextBtn.addEventListener('click', nextTestimonial);
@@ -58,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
         prevBtn.addEventListener('click', prevTestimonial);
     }
 
-    // Auto-rotate testimonials every 15 seconds (changed from 5000 to 15000)
+    // Auto-rotate testimonials every 15 seconds
     setInterval(nextTestimonial, 15000);
 });
 
