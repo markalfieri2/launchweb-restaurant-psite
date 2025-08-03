@@ -109,19 +109,38 @@ body {
 }
 
 .nav-link.order-btn {
-    background: #d4af37;
+    background: var(--primary-color);
     color: white !important;
-    padding: 8px 16px;
-    border-radius: 5px;
-    transition: background 0.3s ease;
+    padding: 12px 20px;
+    border-radius: 25px;
+    transition: var(--transition);
+    white-space: nowrap; /* Prevents text wrapping */
+    border: 2px solid var(--primary-color);
+    font-size: 0.9rem; /* Slightly smaller font to fit better */
+    font-weight: 600;
+    text-align: center;
+    display: inline-block;
+    min-width: fit-content;
 }
 
 .nav-link.order-btn::after {
-    display: none;
+    display: none; /* Remove the underline effect */
 }
 
 .nav-link.order-btn:hover {
     background: #b8941f;
+    border-color: #b8941f;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* Alternative: If you want to allow two lines but with proper button styling */
+.nav-link.order-btn.multiline {
+    white-space: normal;
+    line-height: 1.2;
+    padding: 8px 16px;
+    text-align: center;
+    border-radius: 20px;
 }
 
 .hamburger {
