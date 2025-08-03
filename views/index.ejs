@@ -1,10 +1,131 @@
-<% layout('layout', { title: 'Home' }) %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LaunchWeb Restaurant</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="container">
+      <a href="#" class="logo">LaunchWeb</a>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#menu-preview">Menu</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle Navigation">
+        ☰
+      </button>
+    </div>
+  </header>
 
-<section class="hero">
-  <h1>Welcome to Mezza Luna Grill</h1>
-  <a href="/order" class="btn">View Full Menu</a>
-</section>
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <h1>Welcome to LaunchWeb Restaurant</h1>
+      <p>Authentic flavors, unforgettable experiences.</p>
+      <a href="#menu-preview" class="btn btn-primary">Explore Our Menu</a>
+    </div>
+  </section>
 
-<section class="feature-image">
-  <img src="/img/hero-placeholder.jpg" alt="Delicious food" />
-</section>
+  <!-- Menu Preview Section -->
+  <section id="menu-preview" class="menu-preview container">
+    <h2 class="section-title">Our Favorites</h2>
+    <div class="cards-grid">
+      <article class="card">
+        <img src="img/pasta.jpg" alt="Pasta Special" />
+        <h3>Pasta Della Casa</h3>
+        <p>Handmade fettuccine with creamy alfredo sauce.</p>
+      </article>
+      <article class="card">
+        <img src="img/pizza.jpg" alt="Wood-fired Pizza" />
+        <h3>Wood-Fired Pizza</h3>
+        <p>Classic Margherita with fresh basil and buffalo mozzarella.</p>
+      </article>
+      <article class="card">
+        <img src="img/dessert.jpg" alt="Tiramisu" />
+        <h3>Tiramisu Delight</h3>
+        <p>Layered espresso-soaked ladyfingers and mascarpone.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Our Guests Say</h2>
+      <div class="testimonial-slider">
+        <blockquote>
+          “Absolutely the best Italian food in town. Every bite is a delight!”
+          <cite>— Sarah M.</cite>
+        </blockquote>
+        <blockquote>
+          “Cozy atmosphere, friendly staff, and flavors that bring you home.”
+          <cite>— James L.</cite>
+        </blockquote>
+        <blockquote>
+          “A hidden gem. The pasta is to die for, and the tiramisu is heavenly!”
+          <cite>— Priya K.</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact container">
+    <h2 class="section-title">Get in Touch</h2>
+    <form class="contact-form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Your Name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="you@example.com" required />
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          rows="4"
+          placeholder="How can we help?"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-secondary">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 LaunchWeb Restaurant. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook">Fb</a>
+        <a href="#" aria-label="Instagram">Ig</a>
+        <a href="#" aria-label="Twitter">Tw</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const btn = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.site-nav ul');
+    btn.addEventListener('click', () => {
+      nav.classList.toggle('nav-open');
+    });
+  </script>
+</body>
+</html>
