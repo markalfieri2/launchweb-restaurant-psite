@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
         prevBtn.addEventListener('click', prevTestimonial);
     }
 
-    // Auto-rotate testimonials every 5 seconds
-    setInterval(nextTestimonial, 5000);
+    // Auto-rotate testimonials every 15 seconds (changed from 5000 to 15000)
+    setInterval(nextTestimonial, 15000);
 });
 
 // Smooth Scrolling
