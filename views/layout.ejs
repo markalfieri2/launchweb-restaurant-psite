@@ -9,75 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header class="main-header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <a href="/" class="nav-logo">
-                    <i class="fas fa-utensils"></i>
-                    LaunchWeb Gourmet
-                </a>
-                <ul class="nav-menu">
-                    <li><a href="/" class="nav-link">Home</a></li>
-                    <li><a href="/about" class="nav-link">About</a></li>
-                    <li><a href="/order" class="nav-link order-btn">Order Online</a></li>
-                    <li><a href="/location" class="nav-link">Location</a></li>
-                    <li><a href="/reservations" class="nav-link">Reservations</a></li>
-                    <li><a href="/catering" class="nav-link">Catering</a></li>
-                    <li><a href="/vip" class="nav-link">VIP Club</a></li>
-                    <li><a href="/giftcards" class="nav-link">Gift Cards</a></li>
-                    <li><a href="/contact" class="nav-link">Contact</a></li>
-                </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <%- include('partials/header') %>
 
     <main>
         <%- body %>
     </main>
 
-    <footer class="main-footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>LaunchWeb Gourmet</h3>
-                <p>Where culinary excellence meets exceptional service</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-yelp"></i></a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="/order">Order Online</a></li>
-                    <li><a href="/reservations">Reservations</a></li>
-                    <li><a href="/catering">Catering</a></li>
-                    <li><a href="/vip">VIP Club</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact Info</h4>
-                <p><i class="fas fa-map-marker-alt"></i> 123 Gourmet Street, Wesley Chapel, FL 33543</p>
-                <p><i class="fas fa-phone"></i> (813) 555-FOOD</p>
-                <p><i class="fas fa-envelope"></i> hello@launchwebgourmet.com</p>
-            </div>
-            <div class="footer-section">
-                <h4>Hours</h4>
-                <p>Mon-Thu: 11AM - 10PM</p>
-                <p>Fri-Sat: 11AM - 11PM</p>
-                <p>Sunday: 12PM - 9PM</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 LaunchWeb DS. All rights reserved.</p>
-        </div>
-    </footer>
+    <%- include('partials/footer') %>
 
     <script src="/js/script.js"></script>
 </body>
