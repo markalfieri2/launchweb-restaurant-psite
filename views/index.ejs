@@ -12,22 +12,7 @@
 </head>
 <body>
   <!-- Header & Navigation -->
-  <header class="site-header">
-    <div class="container">
-      <a href="#" class="logo">LaunchWeb</a>
-      <nav class="site-nav">
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#menu-preview">Menu</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <button class="nav-toggle" aria-label="Toggle Navigation">
-        ☰
-      </button>
-    </div>
-  </header>
+  <%- include('partials/header') %>
 
   <!-- Hero Section -->
   <section id="hero" class="hero">
@@ -259,24 +244,8 @@
   </section>
 
   <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2025 LaunchWeb Restaurant. All rights reserved.</p>
-      <div class="social-links">
-        <a href="#" aria-label="Facebook">Fb</a>
-        <a href="#" aria-label="Instagram">Ig</a>
-        <a href="#" aria-label="Twitter">Tw</a>
-      </div>
-    </div>
-  </footer>
+  <%- include('partials/footer') %>
 
-  <script>
-    // Mobile nav toggle
-    const btn = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.site-nav ul');
-    btn.addEventListener('click', () => {
-      nav.classList.toggle('nav-open');
-    });
-  </script>
+  <script src="/js/script.js"></script>
 </body>
 </html>
