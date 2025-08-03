@@ -59,15 +59,15 @@ const menu = [
 ];
 
 // Routes for pages
-app.get('/', (req, res) => res.render('index'));
-app.get('/about', (req, res) => res.render('about'));
-app.get('/location', (req, res) => res.render('location'));
-app.get('/contact', (req, res) => res.render('contact'));
-app.get('/vip', (req, res) => res.render('vip'));
-app.get('/giftcards', (req, res) => res.render('giftcards'));
-app.get('/catering', (req, res) => res.render('catering'));
-app.get('/reservations', (req, res) => res.render('reservations'));
-app.get('/order', (req, res) => res.render('order', { menu }));
+app.get('/', (req, res) => res.render('index', { title: 'Home' }));
+app.get('/about', (req, res) => res.render('about', { title: 'About' }));
+app.get('/location', (req, res) => res.render('location', { title: 'Location' }));
+app.get('/contact', (req, res) => res.render('contact', { title: 'Contact' }));
+app.get('/vip', (req, res) => res.render('vip', { title: 'VIP Club' }));
+app.get('/giftcards', (req, res) => res.render('giftcards', { title: 'Gift Cards' }));
+app.get('/catering', (req, res) => res.render('catering', { title: 'Catering' }));
+app.get('/reservations', (req, res) => res.render('reservations', { title: 'Reservations' }));
+app.get('/order', (req, res) => res.render('order', { title: 'Order Online', menu }));
 
 // Stripe checkout session
 app.post('/create-checkout-session', async (req, res) => {
