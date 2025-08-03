@@ -1,0 +1,32 @@
+<% layout('layout', { title: 'Location & Hours' }) %>
+
+<section class="page-header">
+  <h2>Find Us</h2>
+  <p>Conveniently located in the heart of downtown.</p>
+</section>
+
+<section class="location-details">
+  <div class="map-block">
+    <!-- Replace with real embed when ready -->
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!..."
+      width="100%"
+      height="300"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <div class="info-block">
+    <h3>Address</h3>
+    <p>1234 Main Street<br />Wesley Chapel, FL 33543</p>
+
+    <h3>Hours</h3>
+    <table>
+      <tr><th>Monday–Thursday</th><td>11:00 AM – 10:00 PM</td></tr>
+      <tr><th>Friday–Saturday</th><td>11:00 AM – 11:00 PM</td></tr>
+      <tr><th>Sunday</th><td>12:00 PM – 9:00 PM</td></tr>
+    </table>
+  </div>
+</section>

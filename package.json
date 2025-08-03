@@ -1,0 +1,15 @@
+{
+  "name": "launchwebds-restaurant",
+  "version": "1.0.0",
+  "description": "Portfolio restaurant site with Stripe integration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "stripe": "^11.0.0"
+  }
+}

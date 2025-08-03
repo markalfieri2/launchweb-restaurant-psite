@@ -1,0 +1,14 @@
+<% layout('layout', { title: 'Order Online', scripts: ['/js/order.js'] }) %>
+
+<h2>Order Online</h2>
+<div id="menu-items">
+  <% menu.forEach(item => { %>
+    <div class="menu-item">
+      <img src="/img/menu-item-placeholder.jpg" alt="<%= item.name %>" />
+      <h3><%= item.name %></h3>
+      <p>$<%= (item.price/100).toFixed(2) %></p>
+      <input type="number" min="0" value="0" data-id="<%= item.id %>" data-name="<%= item.name %>" data-price="<%= item.price %>" />
+    </div>
+  <% }) %>
+</div>
+<button id="checkout-btn" class="btn">Checkout</button>

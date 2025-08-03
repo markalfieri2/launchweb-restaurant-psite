@@ -1,0 +1,26 @@
+<% layout('layout', { title: 'Catering' }) %>
+
+<section class="page-header">
+  <h2>Catering Services</h2>
+  <p>Let us cater your next event with our signature dishes.</p>
+</section>
+
+<section class="catering-info">
+  <p>From corporate luncheons to wedding receptions, we handle it all.</p>
+
+  <form action="/catering" method="POST">
+    <label for="eventName">Event Name</label>
+    <input id="eventName" name="eventName" type="text" required />
+
+    <label for="eventDate">Event Date</label>
+    <input id="eventDate" name="eventDate" type="date" required />
+
+    <label for="guestCount">Estimated Guests</label>
+    <input id="guestCount" name="guestCount" type="number" min="1" required />
+
+    <label for="details">Additional Details</label>
+    <textarea id="details" name="details" rows="4"></textarea>
+
+    <button type="submit" class="btn">Request Catering</button>
+  </form>
+</section>

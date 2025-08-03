@@ -1,0 +1,27 @@
+<% layout('layout', { title: 'VIP / Rewards' }) %>
+
+<section class="page-header">
+  <h2>Join Our VIP Club</h2>
+  <p>Become a VIP and unlock exclusive perks.</p>
+</section>
+
+<section class="vip-benefits">
+  <ul>
+    <li>10% off every visit</li>
+    <li>Early access to new menu items</li>
+    <li>Birthday rewards and freebies</li>
+    <li>Invites to members-only events</li>
+  </ul>
+</section>
+
+<section class="vip-signup">
+  <form action="/vip" method="POST">
+    <label for="fullName">Full Name</label>
+    <input id="fullName" name="fullName" type="text" required />
+
+    <label for="emailVip">Email</label>
+    <input id="emailVip" name="email" type="email" required />
+
+    <button type="submit" class="btn">Join Now</button>
+  </form>
+</section>

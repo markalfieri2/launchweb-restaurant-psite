@@ -1,0 +1,30 @@
+<% layout('layout', { title: 'Reservations' }) %>
+
+<section class="page-header">
+  <h2>Reserve a Table</h2>
+  <p>Book your table in seconds—no waiting.</p>
+</section>
+
+<section class="reservation-form">
+  <form action="/reservations" method="POST">
+    <label for="resName">Name</label>
+    <input id="resName" name="name" type="text" required />
+
+    <label for="resEmail">Email</label>
+    <input id="resEmail" name="email" type="email" required />
+
+    <label for="resPhone">Phone</label>
+    <input id="resPhone" name="phone" type="tel" required />
+
+    <label for="resDate">Date</label>
+    <input id="resDate" name="date" type="date" required />
+
+    <label for="resTime">Time</label>
+    <input id="resTime" name="time" type="time" required />
+
+    <label for="resGuests">Guests</label>
+    <input id="resGuests" name="guests" type="number" min="1" required />
+
+    <button type="submit" class="btn">Reserve Now</button>
+  </form>
+</section>
