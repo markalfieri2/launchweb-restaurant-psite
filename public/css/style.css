@@ -488,9 +488,7 @@ body {
 }
 
 /* Remove the first-child override that was causing issues */
-.testimonial-card:first-child {
-    /* Remove these conflicting styles */
-}
+/* Removed empty ruleset for .testimonial-card:first-child */
 
 .testimonial-nav {
     display: flex;
@@ -513,9 +511,10 @@ body {
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
+    font-weight: bold;
     z-index: 11;
-    position: relative;
+    line-height: 1;
 }
 
 .prev-btn:hover, .next-btn:hover {
