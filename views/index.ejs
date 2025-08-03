@@ -31,33 +31,121 @@
 
   <!-- Hero Section -->
   <section id="hero" class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content container">
-      <h1>Welcome to LaunchWeb Restaurant</h1>
-      <p>Authentic flavors, unforgettable experiences.</p>
-      <a href="#menu-preview" class="btn btn-primary">Explore Our Menu</a>
+    <div class="hero-video">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">Experience Culinary Excellence</h1>
+      <p class="hero-subtitle">
+        Where every dish tells a story of passion, tradition, and innovation
+      </p>
+      <div class="hero-buttons">
+        <a href="/order" class="btn btn-primary">Order Now</a>
+        <a href="/reservations" class="btn btn-secondary">Reserve Table</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <i class="fas fa-chevron-down"></i>
     </div>
   </section>
 
   <!-- Menu Preview Section -->
   <section id="menu-preview" class="menu-preview container">
-    <h2 class="section-title">Our Favorites</h2>
-    <div class="cards-grid">
-      <article class="card">
-        <img src="img/pasta.jpg" alt="Pasta Special" />
-        <h3>Pasta Della Casa</h3>
-        <p>Handmade fettuccine with creamy alfredo sauce.</p>
-      </article>
-      <article class="card">
-        <img src="img/pizza.jpg" alt="Wood-fired Pizza" />
-        <h3>Wood-Fired Pizza</h3>
-        <p>Classic Margherita with fresh basil and buffalo mozzarella.</p>
-      </article>
-      <article class="card">
-        <img src="img/dessert.jpg" alt="Tiramisu" />
-        <h3>Tiramisu Delight</h3>
-        <p>Layered espresso-soaked ladyfingers and mascarpone.</p>
-      </article>
+    <h2 class="section-title">Chef's Selections</h2>
+    <p>Handcrafted dishes that define our culinary philosophy</p>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-image">
+          <img
+            src="/img/pasta-special.jpg"
+            alt="Signature Pasta"
+            loading="lazy"
+          />
+          <div class="menu-overlay">
+            <span class="price">$24</span>
+          </div>
+        </div>
+        <div class="menu-content">
+          <h3>Truffle Pasta della Casa</h3>
+          <p
+            >House-made fettuccine with black truffle cream sauce, wild
+            mushrooms, and aged parmesan</p
+          >
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-image">
+          <img
+            src="/img/seafood-special.jpg"
+            alt="Seafood Dish"
+            loading="lazy"
+          />
+          <div class="menu-overlay">
+            <span class="price">$32</span>
+          </div>
+        </div>
+        <div class="menu-content">
+          <h3>Pan-Seared Branzino</h3>
+          <p
+            >Mediterranean sea bass with lemon herb crust, roasted vegetables,
+            and salmoriglio sauce</p
+          >
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-image">
+          <img
+            src="/img/steak-special.jpg"
+            alt="Premium Steak"
+            loading="lazy"
+          />
+          <div class="menu-overlay">
+            <span class="price">$45</span>
+          </div>
+        </div>
+        <div class="menu-content">
+          <h3>Dry-Aged Ribeye</h3>
+          <p
+            >28-day aged prime ribeye with rosemary potatoes, seasonal
+            vegetables, and red wine reduction</p
+          >
+        </div>
+      </div>
+    </div>
+    <div class="menu-cta">
+      <a href="/order" class="btn btn-primary">View Full Menu</a>
+    </div>
+  </section>
+
+  <!-- Restaurant Story Section -->
+  <section class="restaurant-story">
+    <div class="container">
+      <div class="story-content">
+        <div class="story-text">
+          <h2>Our Culinary Journey</h2>
+          <p>
+            Founded with a passion for exceptional cuisine, LaunchWeb Gourmet
+            represents the perfect fusion of traditional techniques and modern
+            innovation. Our award-winning chefs craft each dish with
+            locally-sourced ingredients and time-honored recipes.
+          </p>
+          <p>
+            From our wood-fired grill to our handmade pasta station, every
+            element of our kitchen reflects our commitment to culinary excellence
+            and authentic flavors.
+          </p>
+          <a href="/about" class="btn btn-outline">Our Story</a>
+        </div>
+        <div class="story-image">
+          <img
+            src="/img/chef-kitchen.jpg"
+            alt="Chef in action"
+            loading="lazy"
+          />
+        </div>
+      </div>
     </div>
   </section>
 
@@ -66,18 +154,81 @@
     <div class="container">
       <h2 class="section-title">What Our Guests Say</h2>
       <div class="testimonial-slider">
-        <blockquote>
-          “Absolutely the best Italian food in town. Every bite is a delight!”
-          <cite>— Sarah M.</cite>
-        </blockquote>
-        <blockquote>
-          “Cozy atmosphere, friendly staff, and flavors that bring you home.”
-          <cite>— James L.</cite>
-        </blockquote>
-        <blockquote>
-          “A hidden gem. The pasta is to die for, and the tiramisu is heavenly!”
-          <cite>— Priya K.</cite>
-        </blockquote>
+        <div class="testimonial-card active">
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p>
+            "An absolutely phenomenal dining experience. The truffle pasta was
+            divine, and the service was impeccable. This has become our go-to spot
+            for special occasions."
+          </p>
+          <div class="testimonial-author">
+            <strong>Sarah Johnson</strong>
+            <span>Food Blogger</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p>
+            "The atmosphere is perfect for both business dinners and romantic
+            evenings. Every dish is a masterpiece, and the wine selection is
+            outstanding."
+          </p>
+          <div class="testimonial-author">
+            <strong>Michael Chen</strong>
+            <span>Restaurant Critic</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p>
+            "From the moment we walked in, we knew this was special. The attention
+            to detail in every aspect, from presentation to flavor, is remarkable."
+          </p>
+          <div class="testimonial-author">
+            <strong>Emily Rodriguez</strong>
+            <span>Local Resident</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-nav">
+        <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+        <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready for an Unforgettable Experience?</h2>
+        <p>
+          Join our VIP club for exclusive perks and priority reservations
+        </p>
+        <div class="cta-buttons">
+          <a href="/vip" class="btn btn-primary">Join VIP Club</a>
+          <a href="/giftcards" class="btn btn-secondary">Gift Cards</a>
+        </div>
       </div>
     </div>
   </section>

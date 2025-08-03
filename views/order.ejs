@@ -1,14 +1,190 @@
-<% layout('layout', { title: 'Order Online', scripts: ['/js/order.js'] }) %>
+<% layout('layout', { title: 'Order Online' }) %>
 
-<h2>Order Online</h2>
-<div id="menu-items">
-  <% menu.forEach(item => { %>
-    <div class="menu-item">
-      <img src="/img/menu-item-placeholder.jpg" alt="<%= item.name %>" />
-      <h3><%= item.name %></h3>
-      <p>$<%= (item.price/100).toFixed(2) %></p>
-      <input type="number" min="0" value="0" data-id="<%= item.id %>" data-name="<%= item.name %>" data-price="<%= item.price %>" />
+<section class="page-hero">
+    <div class="container">
+        <h1>Order Online</h1>
+        <p>Fresh ingredients, bold flavors, delivered to your door</p>
     </div>
-  <% }) %>
-</div>
-<button id="checkout-btn" class="btn">Checkout</button>
+</section>
+
+<section class="menu-section">
+    <div class="container">
+        <div class="menu-categories">
+            <button class="category-btn active" data-category="all">All Items</button>
+            <button class="category-btn" data-category="appetizers">Appetizers</button>
+            <button class="category-btn" data-category="pasta">Pasta</button>
+            <button class="category-btn" data-category="seafood">Seafood</button>
+            <button class="category-btn" data-category="meat">Meat & Poultry</button>
+            <button class="category-btn" data-category="desserts">Desserts</button>
+        </div>
+
+        <div class="menu-items-grid">
+            <% menu.forEach(item => { %>
+            <div class="menu-item-card" data-category="<%= item.category %>">
+                <div class="item-image">
+                    <img src="/img/<%= item.image %>" alt="<%= item.name %>" loading="lazy">
+                    <div class="item-overlay">
+                        <button class="quick-add-btn" data-item='<%= JSON.stringify(item) %>'>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="item-content">
+                    <h3><%= item.name %></h3>
+                    <p><%= item.description %></p>
+                    <div class="item-footer">
+                        <span class="price">$<%= (item.price / 100).toFixed(2) %></span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" data-id="<%= item.id %>">-</button>
+                            <input type="number" value="0" min="0" class="qty-input" data-id="<%= item.id %>" data-name="<%= item.name %>" data-price="<%= item.price %>">
+                            <button class="qty-btn plus" data-id="<%= item.id %>">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+
+        <div class="cart-summary">
+            <div class="cart-header">
+                <h3>Your Order</h3>
+                <span class="cart-count">0 items</span>
+            </div>
+            <div class="cart-items"></div>
+            <div class="cart-total">
+                <div class="subtotal">
+                    <span>Subtotal: </span>
+                    <span class="subtotal-amount">$0.00</span>
+                </div>
+                <div class="tax">
+                    <span>Tax: </span>
+                    <span class="tax-amount">$0.00</span>
+                </div>
+                <div class="total">
+                    <span>Total: </span>
+                    <span class="total-amount">$0.00</span>
+                </div>
+            </div>
+            <button id="checkout-btn" class="btn btn-primary checkout-btn" disabled>
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+</section>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+// Initialize Stripe
+const stripe = Stripe('pk_test_YOUR_STRIPE_PUBLIC_KEY');
+
+// Cart functionality
+let cart = [];
+const cartItems = document.querySelector('.cart-items');
+const cartCount = document.querySelector('.cart-count');
+const subtotalAmount = document.querySelector('.subtotal-amount');
+const taxAmount = document.querySelector('.tax-amount');
+const totalAmount = document.querySelector('.total-amount');
+const checkoutBtn = document.getElementById('checkout-btn');
+
+// Update cart display
+function updateCart() {
+    cartItems.innerHTML = '';
+    let subtotal = 0;
+    let itemCount = 0;
+
+    cart.forEach(item => {
+        if (item.quantity > 0) {
+            itemCount += item.quantity;
+            subtotal += item.price * item.quantity;
+            
+            const cartItem = document.createElement('div');
+            cartItem.className = 'cart-item';
+            cartItem.innerHTML = `
+                <span class="item-name">${item.name}</span>
+                <span class="item-qty">x${item.quantity}</span>
+                <span class="item-total">$${((item.price * item.quantity) / 100).toFixed(2)}</span>
+            `;
+            cartItems.appendChild(cartItem);
+        }
+    });
+
+    const tax = subtotal * 0.08; // 8% tax
+    const total = subtotal + tax;
+
+    cartCount.textContent = `${itemCount} items`;
+    subtotalAmount.textContent = `$${(subtotal / 100).toFixed(2)}`;
+    taxAmount.textContent = `$${(tax / 100).toFixed(2)}`;
+    totalAmount.textContent = `$${(total / 100).toFixed(2)}`;
+    
+    checkoutBtn.disabled = itemCount === 0;
+}
+
+// Quantity controls
+document.querySelectorAll('.qty-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const id = e.target.dataset.id;
+        const input = document.querySelector(`input[data-id="${id}"]`);
+        const isPlus = e.target.classList.contains('plus');
+        
+        let newValue = parseInt(input.value) + (isPlus ? 1 : -1);
+        newValue = Math.max(0, newValue);
+        input.value = newValue;
+        
+        updateCartItem(id, newValue, input.dataset.name, parseInt(input.dataset.price));
+    });
+});
+
+// Update cart item
+function updateCartItem(id, quantity, name, price) {
+    const existingItem = cart.find(item => item.id === id);
+    
+    if (existingItem) {
+        existingItem.quantity = quantity;
+    } else {
+        cart.push({ id, name, price, quantity });
+    }
+    
+    updateCart();
+}
+
+// Category filtering
+document.querySelectorAll('.category-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        
+        const category = e.target.dataset.category;
+        document.querySelectorAll('.menu-item-card').forEach(card => {
+            if (category === 'all' || card.dataset.category === category) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
+
+// Checkout
+checkoutBtn.addEventListener('click', async () => {
+    const items = cart.filter(item => item.quantity > 0);
+    
+    if (items.length === 0) {
+        alert('Please select items to order');
+        return;
+    }
+
+    try {
+        const response = await fetch('/create-checkout-session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ items })
+        });
+        
+        const { id } = await response.json();
+        await stripe.redirectToCheckout({ sessionId: id });
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Something went wrong. Please try again.');
+    }
+});
+</script>
