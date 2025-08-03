@@ -109,11 +109,11 @@ body {
 }
 
 .nav-link.order-btn {
-    background: var(--primary-color);
-    color: var(--white);
-    padding: 0.7rem 1.5rem;
-    border-radius: 50px;
-    font-weight: 600;
+    background: #d4af37;
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
 }
 
 .nav-link.order-btn::after {
@@ -122,7 +122,6 @@ body {
 
 .nav-link.order-btn:hover {
     background: #b8941f;
-    transform: translateY(-2px);
 }
 
 .hamburger {
