@@ -458,30 +458,32 @@ body {
     overflow: hidden;
     min-height: 250px;
     width: 100%;
+    display: flex;
+    justify-content: center; /* Center the container */
+    align-items: center;
 }
 
 .testimonial-card {
     opacity: 0;
     transform: translateX(100%);
     transition: all 0.5s ease-in-out;
-    position: absolute; /* Keep all cards absolutely positioned */
+    position: absolute;
     width: 100%;
-    top: 0;
-    left: 0;
+    max-width: 600px; /* Keep max width */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateX(100%); /* Center both horizontally and vertically */
     visibility: hidden;
     background: white;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
 }
 
 .testimonial-card.active {
     opacity: 1;
-    transform: translateX(0);
-    position: absolute; /* Keep active card absolutely positioned too */
+    transform: translate(-50%, -50%) translateX(0); /* Keep centered when active */
     visibility: visible;
 }
 
@@ -513,6 +515,7 @@ body {
     transition: all 0.3s ease;
     font-size: 1.2rem;
     z-index: 11;
+    position: relative;
 }
 
 .prev-btn:hover, .next-btn:hover {
@@ -522,6 +525,37 @@ body {
 
 .prev-btn i, .next-btn i {
     pointer-events: none;
+}
+
+/* Fallback if Font Awesome doesn't load */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.prev-btn .fas,
+.next-btn .fas {
+    display: inline-block;
+}
+
+/* If Font Awesome fails to load, show fallback */
+.prev-btn:not(:has(.fas))::before {
+    content: "‹";
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.next-btn:not(:has(.fas))::before {
+    content: "›";
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .testimonials {
