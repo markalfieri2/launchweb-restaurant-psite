@@ -23,34 +23,44 @@ window.addEventListener('scroll', () => {
 });
 
 // Testimonial Slider
-const testimonialCards = document.querySelectorAll('.testimonial-card');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-let currentTestimonial = 0;
+document.addEventListener('DOMContentLoaded', function() {
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    let currentTestimonial = 0;
 
-function showTestimonial(index) {
-    testimonialCards.forEach((card, i) => {
-        card.classList.toggle('active', i === index);
-    });
-}
+    function showTestimonial(index) {
+        // Hide all testimonials
+        testimonialCards.forEach(card => {
+            card.classList.remove('active');
+        });
+        
+        // Show the current testimonial
+        testimonialCards[index].classList.add('active');
+    }
 
-prevBtn?.addEventListener('click', () => {
-    currentTestimonial = (currentTestimonial - 1 + testimonialCards.length) % testimonialCards.length;
-    showTestimonial(currentTestimonial);
-});
-
-nextBtn?.addEventListener('click', () => {
-    currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
-    showTestimonial(currentTestimonial);
-});
-
-// Auto-advance testimonials
-setInterval(() => {
-    if (nextBtn) {
+    function nextTestimonial() {
         currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
         showTestimonial(currentTestimonial);
     }
-}, 5000);
+
+    function prevTestimonial() {
+        currentTestimonial = (currentTestimonial - 1 + testimonialCards.length) % testimonialCards.length;
+        showTestimonial(currentTestimonial);
+    }
+
+    // Event listeners for buttons
+    if (nextBtn) {
+        nextBtn.addEventListener('click', nextTestimonial);
+    }
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', prevTestimonial);
+    }
+
+    // Auto-rotate testimonials every 5 seconds
+    setInterval(nextTestimonial, 5000);
+});
 
 // Smooth Scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
