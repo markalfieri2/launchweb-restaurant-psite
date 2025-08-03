@@ -28,11 +28,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
     let currentTestimonial = 0;
+    let isTransitioning = false; // Prevent multiple clicks during transition
 
     // Safety check - only run if testimonials exist
     if (testimonialCards.length === 0) return;
 
     function showTestimonial(index) {
+        if (isTransitioning) return; // Prevent overlapping transitions
+        
+        isTransitioning = true;
+        
         // Hide all testimonials
         testimonialCards.forEach(card => {
             card.classList.remove('active');
@@ -42,6 +47,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (testimonialCards[index]) {
             testimonialCards[index].classList.add('active');
         }
+        
+        // Reset transition lock after animation completes
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 500);
     }
 
     function nextTestimonial() {
@@ -55,7 +65,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Initialize - make sure only first testimonial is active
-    showTestimonial(0);
+    setTimeout(() => {
+        showTestimonial(0);
+    }, 100); // Small delay to ensure DOM is ready
 
     // Event listeners for buttons
     if (nextBtn) {

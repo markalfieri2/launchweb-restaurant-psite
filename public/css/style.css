@@ -456,33 +456,38 @@ body {
 .testimonial-slider {
     position: relative;
     overflow: hidden;
-    min-height: 250px; /* Set a fixed height to prevent layout shift */
+    min-height: 250px;
+    width: 100%;
 }
 
 .testimonial-card {
     opacity: 0;
     transform: translateX(100%);
     transition: all 0.5s ease-in-out;
-    position: absolute;
+    position: absolute; /* Keep all cards absolutely positioned */
     width: 100%;
     top: 0;
     left: 0;
-    visibility: hidden; /* Add this to completely hide non-active cards */
+    visibility: hidden;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .testimonial-card.active {
     opacity: 1;
     transform: translateX(0);
-    position: relative;
-    visibility: visible; /* Make active card visible */
+    position: absolute; /* Keep active card absolutely positioned too */
+    visibility: visible;
 }
 
-/* Ensure only the first testimonial is visible on page load */
+/* Remove the first-child override that was causing issues */
 .testimonial-card:first-child {
-    position: relative;
-    opacity: 1;
-    transform: translateX(0);
-    visibility: visible;
+    /* Remove these conflicting styles */
 }
 
 .testimonial-nav {
@@ -490,6 +495,8 @@ body {
     justify-content: center;
     gap: 1rem;
     margin-top: 2rem;
+    position: relative; /* Ensure nav buttons are above the slider */
+    z-index: 10;
 }
 
 .prev-btn, .next-btn {
@@ -504,6 +511,8 @@ body {
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 1.2rem;
+    z-index: 11;
 }
 
 .prev-btn:hover, .next-btn:hover {
@@ -511,19 +520,13 @@ body {
     transform: scale(1.1);
 }
 
+.prev-btn i, .next-btn i {
+    pointer-events: none;
+}
+
 .testimonials {
     background: #f8f8f8;
     padding: 4rem 0;
-}
-
-.testimonial-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
 }
 
 .stars {
